@@ -6,94 +6,91 @@
     <title>Bông điên điển - Món ngon mùa nước nổi</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Chọn phông chữ dễ nhìn cho trang web */
-            line-height: 1.6;               /* Thiết lập khoảng cách giữa các dòng chữ */
-            color: #333;                    /* Màu chữ mặc định cho toàn trang */
-            max-width: 950px;               /* Độ rộng tối đa của nội dung trang */
-            margin: 30px auto;              /* Căn giữa toàn bộ trang web */
-            padding: 0 20px;                /* Khoảng cách đệm hai bên lề */
+            font-family: Arial, sans-serif; 
+            line-height: 1.6;               
+            color: #333;                    
+            max-width: 950px;              
+            margin: 30px auto;              
+            padding: 0 20px;               
         }
 
-        /* Tiêu đề bài viết */
         h1 {
-            color: #E65100;                 /* Tiêu đề chính màu cam */
-            font-size: 32px;                /* Kích thước chữ lớn */
-            margin-bottom: 0;               /* Loại bỏ khoảng cách phía dưới */
+            color: #E65100;                
+            font-size: 32px;                
+            margin-bottom: 0;              
         }
 
         .subtitle {
-            color: #E65100;                 /* Tiêu đề phụ màu cam */
-            font-size: 18px;                /* Cỡ chữ dòng phụ */
-            margin-top: 5px;                /* Khoảng cách phía trên */
-            margin-bottom: 25px;            /* Khoảng cách phía dưới */
-            font-weight: bold;              /* In đậm dòng tiêu đề phụ */
+            color: #E65100;                
+            font-size: 18px;             
+            margin-top: 5px;              
+            margin-bottom: 25px;          
+            font-weight: bold;             
         }
-
-        /* Bố cục phần nội dung và ảnh */
+        
         .main-content {
-            overflow: hidden;               /* Xử lý tràn viền khi dùng float */
-            margin-bottom: 30px;            /* Khoảng cách dưới khối nội dung */
+            overflow: hidden;              
+            margin-bottom: 30px;           
         }
 
         .text-section {
-            float: left;                    /* Đẩy khối văn bản sang trái */
-            width: 68%;                     /* Chiếm 68% chiều rộng */
+            float: left;                    
+            width: 68%;                   
         }
 
         .text-section p {
-            margin-top: 0;                  /* Bỏ khoảng cách trên đoạn văn */
-            text-align: justify;            /* Căn đều văn bản hai bên */
+            margin-top: 0;                 
+            text-align: justify;          
         }
 
-        /* Hiệu ứng Drop cap cho chữ cái đầu */
+        
         .text-section p:first-of-type::first-letter { 
-            font-size: 3.8em;               /* Phóng to chữ cái đầu */
-            color: #E65100;                 /* Màu cam cho chữ cái đầu */
-            float: left;                    /* Đẩy chữ cái sang trái */
-            line-height: 0.8;               /* Điều chỉnh độ cao dòng */
-            margin-right: 8px;              /* Khoảng cách bên phải chữ cái */
-            font-weight: bold;              /* In đậm chữ cái đầu */
+            font-size: 3.8em;              
+            color: #E65100;                
+            float: left;                 
+            line-height: 0.8;              
+            margin-right: 8px;            
+            font-weight: bold;             
         }
 
-        /* Ảnh hoa nổi bên phải, bo góc */
+     
         .image-section {
-            float: right;                   /* Đẩy ảnh sang phải */
-            width: 28%;                     /* Chiếm 28% chiều rộng */
-            text-align: right;              /* Căn ảnh về lề phải */
-        }
+            float: right;                   
+            width: 28%;                   
+            text-align: right;  }           
 
         .image-section img {
-            width: 100%;                    /* Ảnh co giãn theo khối chứa */
-            border-radius: 10px;            /* Bo tròn góc hình ảnh */
+            width: 100%;                  
+            border-radius: 10px;      
         }
 
-        /* Khối Hương vị miền Nam */
+       
         .flavor-box {
-            border: 2px solid #2E7D32;      /* Viền khung màu xanh */
-            background-color: #f4fbf4;      /* Màu nền nhạt cho khối */
-            padding: 20px;                  /* Khoảng cách đệm bên trong */
-            border-radius: 6px;             /* Bo tròn góc khung */
-            clear: both;                    /* Xóa hiệu ứng float của khối trên */
+            border: 2px solid #2E7D32;      
+            background-color: #f4fbf4;     
+            padding: 20px;                  
+            border-radius: 6px;            
+            clear: both;                  
         }
 
         .flavor-box h3 {
-            color: #2E7D32;                 /* Tiêu đề khối màu xanh */
-            font-style: italic;             /* Tiêu đề in nghiêng */
-            margin-top: 0;                  /* Bỏ khoảng cách phía trên */
-            font-size: 20px;                /* Cỡ chữ tiêu đề khối */
+            color: #2E7D32;               
+            font-style: italic;            
+            margin-top: 0;                
+            font-size: 20px;                
         }
 
-        /* Danh sách chia 2 cột bằng thuộc tính columns */
+
         .flavor-box ul {
-            columns: 2;                     /* Chia danh sách thành 2 cột */
-            -webkit-columns: 2;             /* Hỗ trợ Chrome/Safari */
-            -moz-columns: 2;                /* Hỗ trợ Firefox */
-            padding-left: 20px;             /* Khoảng cách lề trái cho danh sách */
-            margin-bottom: 0;               /* Bỏ khoảng cách dưới danh sách */
+            columns: 2;                    
+            -webkit-columns: 2;        
+            -moz-columns: 2;              
+            padding-left: 20px;             
+            margin-bottom: 0;            
         }
 
         .flavor-box li {
-            margin-bottom: 10px;            /* Khoảng cách giữa các mục */
+            margin-bottom: 10px;           
         }
     </style>
 </head>
