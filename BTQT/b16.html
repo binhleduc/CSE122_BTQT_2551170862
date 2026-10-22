@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách việc cần làm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* Thẻ ứng dụng rộng 600px, nền trắng, bo góc, bóng đổ */
+        .todo-app {
+            width: 600px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* Tiêu đề ứng dụng */
+        .todo-header {
+            background: #6d28d9;
+            color: #FFFFFF;
+            padding: 24px;
+        }
+
+        .todo-header h1 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+        }
+
+        .todo-header p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Khung nhập liệu và nút Thêm */
+        .todo-input-section {
+            padding: 20px 24px;
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .todo-input-section input {
+            flex-grow: 1;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .todo-input-section input:focus {
+            border-color: #6d28d9;
+        }
+
+        .todo-input-section button {
+            background: #6d28d9;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .todo-input-section button:hover {
+            background: #5b21b6;
+        }
+
+        /* Danh sách công việc */
+        .todo-list {
+            list-style: none;
+            padding: 0 24px;
+            margin: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px dashed #ede9fe;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-item-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        /* Ô đánh dấu (Checkbox tùy chỉnh) */
+        .checkbox-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #a78bfa;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .todo-item.completed .checkbox-box {
+            background-color: #6d28d9;
+            border-color: #6d28d9;
+        }
+
+        .checkbox-box::after {
+            content: "";
+            display: none;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .todo-item.completed .checkbox-box::after {
+            display: block;
+        }
+
+        /* Nội dung chữ công việc */
+        .todo-text {
+            font-size: 15px;
+            color: #1e293b;
+            transition: color 0.2s;
+        }
+
+        .todo-item.completed .todo-text {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+
+        /* Nút xoá */
+        .delete-btn {
+            background: #fde2e2;
+            color: #b91c1c;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #fecaca;
+        }
+
+        /* Phần chân hiển thị số việc còn lại */
+        .todo-footer {
+            padding: 20px 24px;
+            font-size: 14px;
+            color: #64748b;
+            border-top: 1px solid #f1f5f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-app">
+        <!-- Tiêu đề -->
+        <div class="todo-header">
+            <h1>Danh sách việc cần làm</h1>
+            <p>Thêm việc mới, đánh dấu hoàn thành hoặc xoá — tất cả bằng JavaScript.</p>
+        </div>
+
+        <!-- Ô nhập và nút thêm -->
+        <div class="todo-input-section">
+            <input type="text" id="taskInput" placeholder="Nhập công việc mới...">
+            <button id="addBtn">Thêm</button>
+        </div>
+
+        <!-- Danh sách việc -->
+        <ul class="todo-list" id="taskList">
+            <li class="todo-item completed">
+                <div class="todo-item-left" onclick="toggleTask(this)">
+                    <div class="checkbox-box"></div>
+                    <span class="todo-text">Đọc chương HTML5 cơ bản</span>
+                </div>
+                <button class="delete-btn" onclick="deleteTask(this)">Xoá</button>
+            </li>
+            <li class="todo-item">
+                <div class="todo-item-left" onclick="toggleTask(this)">
+                    <div class="checkbox-box"></div>
+                    <span class="todo-text">Làm bài tập CSS Grid</span>
+                </div>
+                <button class="delete-btn" onclick="deleteTask(this)">Xoá</button>
+            </li>
+            <li class="todo-item">
+                <div class="todo-item-left" onclick="toggleTask(this)">
+                    <div class="checkbox-box"></div>
+                    <span class="todo-text">Quay video OBS nộp bài</span>
+                </div>
+                <button class="delete-btn" onclick="deleteTask(this)">Xoá</button>
+            </li>
+        </ul>
+
+        <!-- Số việc chưa hoàn thành -->
+        <div class="todo-footer" id="taskCount">
+            Còn 2 việc chưa hoàn thành
+        </div>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addBtn = document.getElementById('addBtn');
+        const taskList = document.getElementById('taskList');
+        const taskCount = document.getElementById('taskCount');
+
+        // Hàm cập nhật số lượng việc chưa hoàn thành
+        function updateCount() {
+            const items = taskList.getElementsByClassName('todo-item');
+            let count = 0;
+            for (let item of items) {
+                if (!item.classList.contains('completed')) {
+                    count++;
+                }
+            }
+            taskCount.textContent = `Còn ${count} việc chưa hoàn thành`;
+        }
+
+        // Hàm đánh dấu hoàn thành / chưa hoàn thành
+        function toggleTask(element) {
+            const item = element.parentElement;
+            item.classList.toggle('completed');
+            updateCount();
+        }
+
+        // Hàm xoá công việc khỏi danh sách
+        function deleteTask(button) {
+            const item = button.parentElement;
+            item.remove();
+            updateCount();
+        }
+
+        // Hàm thêm công việc mới
+        function addTask() {
+            const text = taskInput.value.trim();
+            if (text === '') return;
+
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.innerHTML = `
+                <div class="todo-item-left" onclick="toggleTask(this)">
+                    <div class="checkbox-box"></div>
+                    <span class="todo-text">${text}</span>
+                </div>
+                <button class="delete-btn" onclick="deleteTask(this)">Xoá</button>
+            `;
+
+            taskList.appendChild(li);
+            taskInput.value = '';
+            updateCount();
+        }
+
+        // Lắng nghe sự kiện click nút Thêm và nhấn phím Enter
+        addBtn.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Khởi chạy cập nhật số đếm ban đầu
+        updateCount();
+    </script>
+
+</body>
+</html>

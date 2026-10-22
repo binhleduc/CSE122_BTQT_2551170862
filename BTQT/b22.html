@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chế độ Tối / Sáng</title>
+    <style>
+        /* Khai báo biến CSS mặc định (Chế độ Sáng) */
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --card-title: #2563eb;
+            --card-text: #475569;
+            --toggle-bg: #cbd5e1;
+            --toggle-circle: #ffffff;
+        }
+
+        /* Ghi đè biến CSS bằng class .toi (Chế độ Tối) */
+        body.toi {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --card-title: #60a5fa;
+            --card-text: #94a3b8;
+            --toggle-bg: #2563eb;
+            --toggle-circle: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            /* Thêm transition để màu nền và chữ chuyển động mượt mà không bị giật */
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--text-color);
+            transition: color 0.4s ease;
+        }
+
+        /* Thiết kế nút gạt (Switch Toggle) */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: 0.4s;
+            border-radius: 32px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-circle);
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(28px);
+        }
+
+        /* Các thẻ thông tin */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card h3 {
+            color: var(--card-title);
+            font-size: 17px;
+            margin-top: 0;
+            margin-bottom: 8px;
+            transition: color 0.4s ease;
+        }
+
+        .card p {
+            color: var(--card-text);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.5;
+            transition: color 0.4s ease;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: var(--card-text);
+            margin-top: 30px;
+            transition: color 0.4s ease;
+        }
+    </style>
+</head>
+<body class="toi">
+
+    <div class="header-container">
+        <h1>Chế độ Tối / Sáng</h1>
+        <label class="switch">
+            <input type="checkbox" id="themeToggle" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="card">
+        <h3>Biến CSS (CSS Variables)</h3>
+        <p>Toàn bộ màu sắc được khai báo trong :root và ghi đè bằng class .toi.</p>
+    </div>
+
+    <div class="card">
+        <h3>Chuyển đổi bằng JavaScript</h3>
+        <p>Nút gạt thêm/bỏ class .toi trên &lt;body&gt; — mọi thành phần tự đổi màu.</p>
+    </div>
+
+    <div class="card">
+        <h3>Chuyển màu mượt</h3>
+        <p>Dùng transition để màu nền và chữ chuyển dần, không bị giật.</p>
+    </div>
+
+    <div class="footer-note" id="statusNote">
+        Đây là giao diện ở chế độ TỐI (đang bật).
+    </div>
+
+    <script>
+        const toggleSwitch = document.getElementById('themeToggle');
+        const bodyElement = document.body;
+        const statusNote = document.getElementById('statusNote');
+
+        // Lắng nghe sự kiện bật/tắt nút gạt để thêm hoặc bỏ class .toi
+        toggleSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                bodyElement.classList.add('toi');
+                statusNote.textContent = "Đây là giao diện ở chế độ TỐI (đang bật).";
+            } else {
+                bodyElement.classList.remove('toi');
+                statusNote.textContent = "Đây là giao diện ở chế độ SÁNG (đang bật).";
+            }
+        });
+    </script>
+
+</body>
+</html>

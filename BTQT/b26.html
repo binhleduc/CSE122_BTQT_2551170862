@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tham gia CLB Lập trình Web</title>
+    <!-- Nhúng Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 40px 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="max-width: 750px;">
+        
+        <!-- Thẻ Card chứa form đăng ký -->
+        <div class="card shadow border-0 rounded-3 overflow-hidden">
+            <!-- Tiêu đề thẻ (Header) màu xanh lá #198754 (bg-success) -->
+            <div class="card-header bg-success text-white text-center py-3">
+                <h4 class="mb-0 fw-bold">Đăng ký tham gia CLB Lập trình Web</h4>
+            </div>
+
+            <div class="card-body p-4">
+                <form>
+                    <!-- Hàng 1: Họ và tên & Mã sinh viên -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label fw-semibold">Họ và tên</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="studentId" class="form-label fw-semibold">Mã sinh viên</label>
+                            <input type="text" class="form-control" id="studentId" placeholder="22xxxxxx" required>
+                        </div>
+                    </div>
+
+                    <!-- Hàng 2: Email & Số điện thoại -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label fw-semibold">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="sv@tlu.edu.vn" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label fw-semibold">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="09xxxxxxxx" required>
+                        </div>
+                    </div>
+
+                    <!-- Trình độ (Radio buttons inline) -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold d-block">Trình độ</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="level" id="levelBasic" value="coban" checked>
+                            <label class="form-check-label" for="levelBasic">Cơ bản</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="level" id="levelIntermediate" value="kha">
+                            <label class="form-check-label" for="levelIntermediate">Khá</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="level" id="levelAdvanced" value="tot">
+                            <label class="form-check-label" for="levelAdvanced">Tốt</label>
+                        </div>
+                    </div>
+
+                    <!-- Chọn lớp (Select dropdown) -->
+                    <div class="mb-3">
+                        <label for="classSelect" class="form-label fw-semibold">Chọn lớp</label>
+                        <select class="form-select" id="classSelect" required>
+                            <option value="" selected disabled>-- Chọn lớp của bạn --</option>
+                            <option value="67CNTT1">67CNTT1</option>
+                            <option value="67CNTT2">67CNTT2</option>
+                            <option value="67KTPM">67KTPM</option>
+                        </select>
+                    </div>
+
+                    <!-- Checkbox cam kết -->
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" id="commitCheck" required>
+                        <label class="form-check-label" for="commitCheck">Tôi cam kết tự làm bài và quay video OBS</label>
+                    </div>
+
+                    <!-- Khu vực nút bấm (Nhập lại & Đăng ký) -->
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="reset" class="btn btn-outline-secondary px-4">Nhập lại</button>
+                        <button type="submit" class="btn btn-success px-4">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Nhúng Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 28 - Carousel & Tabs (Bootstrap)</title>
+    <!-- Nhúng Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 30px 15px;
+        }
+
+        .main-title {
+            text-align: center;
+            color: #0d6efd;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        /* Cố định chiều cao ảnh slide 340px và dùng object-fit: cover theo đề bài */
+        .carousel-item img {
+            height: 340px;
+            object-fit: cover;
+        }
+
+        /* Khung chứa nội dung tab có nền trắng #FFFFFF */
+        .tab-content-box {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="max-width: 900px;">
+        
+        <!-- Tiêu đề chính -->
+        <h2 class="main-title">Khám phá điểm đến</h2>
+
+        <!-- Component Carousel (3 ảnh, có indicators, nút prev/next và tự chạy) -->
+        <div id="destinationCarousel" class="carousel slide mb-4 shadow rounded overflow-hidden" data-bs-ride="carousel">
+            <!-- Các nút chỉ báo vị trí (indicators) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#destinationCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            
+            <!-- Phần nội dung các slide ảnh -->
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <img src="28.1.jpg" class="d-block w-100" alt="Vịnh Hạ Long">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded py-2">
+                        <h5>Vịnh Hạ Long</h5>
+                        <p class="mb-0">Di sản thiên nhiên thế giới</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="28.2.jpg" class="d-block w-100" alt="Hang Sơn Đoòng">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded py-2">
+                        <h5>Hang Sơn Đoòng</h5>
+                        <p class="mb-0">Hang động lớn nhất thế giới</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="28.3.jpg" class="d-block w-100" alt="Thác Bản Giốc">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded py-2">
+                        <h5>Thác Bản Giốc</h5>
+                        <p class="mb-0">Thác nước hùng vĩ biên giới</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút điều hướng qua lại (Prev / Next) -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#destinationCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#destinationCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Component Nav-pills (3 Tab: Giới thiệu / Lịch trình / Chi phí) -->
+        <ul class="nav nav-pills justify-content-center mb-2" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold px-4" id="pills-intro-tab" data-bs-toggle="pill" data-bs-target="#pills-intro" type="button" role="tab" aria-controls="pills-intro" aria-selected="true">Giới thiệu</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold px-4" id="pills-schedule-tab" data-bs-toggle="pill" data-bs-target="#pills-schedule" type="button" role="tab" aria-controls="pills-schedule" aria-selected="false">Lịch trình</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold px-4" id="pills-price-tab" data-bs-toggle="pill" data-bs-target="#pills-price" type="button" role="tab" aria-controls="pills-price" aria-selected="false">Chi phí</button>
+            </li>
+        </ul>
+
+        <!-- Component Tab Content (Đổi nội dung linh hoạt không cần tải lại trang) -->
+        <div class="tab-content-box">
+            <div class="tab-content" id="pills-tabContent">
+                <!-- Nội dung Tab 1: Giới thiệu -->
+                <div class="tab-pane fade show active" id="pills-intro" role="tabpanel" aria-labelledby="pills-intro-tab">
+                    <p class="mb-0">Tour 3 ngày 2 đêm khám phá các danh thắng miền Bắc, khởi hành hằng tuần.</p>
+                </div>
+                <!-- Nội dung Tab 2: Lịch trình -->
+                <div class="tab-pane fade" id="pills-schedule" role="tabpanel" aria-labelledby="pills-schedule-tab">
+                    <p class="mb-0"><strong>Lịch trình chi tiết:</strong> Xe và hướng dẫn viên đón đoàn khởi hành tham quan các điểm du lịch nổi tiếng, trải nghiệm văn hóa ẩm thực đặc sắc.</p>
+                </div>
+                <!-- Nội dung Tab 3: Chi phí -->
+                <div class="tab-pane fade" id="pills-price" role="tabpanel" aria-labelledby="pills-price-tab">
+                    <p class="mb-0"><strong>Thông tin chi phí:</strong> Giá tour trọn gói bao gồm vé tham quan, khách sạn, phương tiện vận chuyển và các bữa ăn chính.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Nhúng Bootstrap 5 JS Bundle CDN (Bắt buộc cho hoạt động của Carousel và Tabs) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

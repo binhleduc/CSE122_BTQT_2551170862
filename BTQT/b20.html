@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Hiệu ứng ảnh với CSS Filter và Transform</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #12181b; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .image-card {
+            background-color: #1c2226;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+            width: 350px;
+        }
+
+        .image-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            filter: grayscale(1);
+            transition: all 0.3s ease;
+        }
+
+        .image-card .title-text {
+            margin-top: 15px;
+            font-size: 22px;
+            font-style: italic;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .button-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 750px;
+        }
+
+        .button-bar button {
+            background-color: #232b30;
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .button-bar button:hover {
+            background-color: #344148;
+        }
+
+        .button-bar button.active {
+            background-color: #0d6efd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Khung hiển thị ảnh hoa hồng và dòng chữ -->
+    <div class="image-card">
+        <img id="roseImage" src="anhb20.gif" alt="Hoa hồng"> <!-- Đường dẫn ảnh hoa hồng -->
+        <div class="title-text">Special For You</div> <!-- Dòng chữ trang trí -->
+    </div>
+
+    <!-- Thanh chứa 13 nút bấm áp dụng các hiệu ứng CSS filter / transform -->
+    <div class="button-bar">
+        <button class="active" onclick="applyEffect('gray', this)">Gray</button>
+        <button onclick="applyEffect('xray', this)">Xray</button>
+        <button onclick="applyEffect('invert', this)">Invert</button>
+        <button onclick="applyEffect('fliph', this)">FlipH</button>
+        <button onclick="applyEffect('flipv', this)">FlipV</button>
+        <button onclick="applyEffect('glow', this)">Glow</button>
+        <button onclick="applyEffect('shadow', this)">Shadow</button>
+        <button onclick="applyEffect('boldshadow', this)">Bold Shadow</button>
+        <button onclick="applyEffect('dropshadow', this)">DropShadow</button>
+        <button onclick="applyEffect('blur', this)">Blur</button>
+        <button onclick="applyEffect('wave', this)">Wave</button>
+        <button onclick="applyEffect('mask', this)">Mask</button>
+        <button onclick="applyEffect('alpha', this)">Alpha</button>
+    </div>
+
+    <!-- Khai báo SVG Filter phụ trợ cho hiệu ứng sóng nước (Wave) -->
+    <svg style="display:none;">
+        <filter id="waveFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
+    <script>
+        // Hàm JavaScript xử lý sự kiện bấm nút để thay đổi hiệu ứng ảnh ngay lập tức
+        function applyEffect(effectName, btnElement) {
+            const img = document.getElementById('roseImage'); // Lấy phần tử hình ảnh hoa hồng
+
+            // Reset lại toàn bộ hiệu ứng filter và transform cũ trước khi gán mới
+            img.style.filter = 'none';
+            img.style.transform = 'none';
+
+            // Xóa class 'active' khỏi tất cả các nút bấm
+            const buttons = document.querySelectorAll('.button-bar button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Thêm class 'active' (tô nổi bật) vào nút vừa được người dùng bấm
+            btnElement.classList.add('active');
+
+            // Switch case kiểm tra tên hiệu ứng tương ứng với nút được chọn
+            switch (effectName) {
+                case 'gray':
+                    img.style.filter = 'grayscale(1)'; // Hiệu ứng ảnh xám trắng đen
+                    break;
+                case 'xray':
+                    img.style.filter = 'invert(1) grayscale(1)'; // Hiệu ứng Xray kết hợp đảo màu và xám
+                    break;
+                case 'invert':
+                    img.style.filter = 'invert(1)'; // Hiệu ứng đảo ngược màu sắc
+                    break;
+                case 'fliph':
+                    img.style.transform = 'scaleX(-1)'; // Lật ảnh theo chiều ngang (Flip Horizontal)
+                    break;
+                case 'flipv':
+                    img.style.transform = 'scaleY(-1)'; // Lật ảnh theo chiều dọc (Flip Vertical)
+                    break;
+                case 'glow':
+                    img.style.filter = 'drop-shadow(0 0 12px #ffdf00)'; // Hiệu ứng phát sáng vàng rực
+                    break;
+                case 'shadow':
+                    img.style.filter = 'drop-shadow(3px 3px 5px rgba(0,0,0,0.6))'; // Hiệu ứng đổ bóng tiêu chuẩn
+                    break;
+                case 'boldshadow':
+                    img.style.filter = 'drop-shadow(8px 8px 15px rgba(0,0,0,0.9))'; // Hiệu ứng đổ bóng đậm/nặng
+                    break;
+                case 'dropshadow':
+                    img.style.filter = 'drop-shadow(5px 5px 10px #333)'; // Hiệu ứng drop shadow theo đề bài
+                    break;
+                case 'blur':
+                    img.style.filter = 'blur(3px)'; // Hiệu ứng làm mờ ảnh 3px
+                    break;
+                case 'wave':
+                    img.style.filter = 'url(#waveFilter)'; // Áp dụng SVG filter tạo hiệu ứng sóng (Wave)
+                    break;
+                case 'mask':
+                    img.style.filter = 'contrast(150%) brightness(80%)'; // Hiệu ứng xử lý bộ lọc tương phản/mask
+                    break;
+                case 'alpha':
+                    img.style.filter = 'opacity(0.4)'; // Hiệu ứng độ mờ trong suốt alpha 40%
+                    break;
+            }
+        }
+    </script>
+
+</body>
+</html>

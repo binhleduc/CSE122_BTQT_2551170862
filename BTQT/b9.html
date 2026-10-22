@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ sơ cá nhân - Nguyễn Văn An</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+  }
+  body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .profile-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+  }
+  .left-column {
+    background:fixed linear-gradient(135deg, #1565C0 , #0d3f7a);
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff;
+    color: #1565C0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .name {
+    font-size: 22px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .title {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 25px;
+  }
+  .contact-info p {
+    text-align: left;
+    font-size: 14px;
+    width: 100%;
+    line-height: 2;
+  }
+  .right-column {
+    padding: 30px 35px;
+  }
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #1565C0;
+    border-bottom: 2px solid #3333;
+    padding-bottom: 6px;
+  }
+  .section-content {
+    font-size: 14px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: #333333;
+  }
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .skill-chip {
+    background-color: #e3f0ff;
+    color: #0d3f7a;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .links a {
+    color: #1565C0;
+    text-decoration: underline;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Khung hồ sơ chính chứa cả 2 cột -->
+  <main class="profile-card">
+    
+    <!-- CỘT TRÁI: Dùng thẻ <aside> cho nội dung phụ/thông tin cá nhân -->
+    <aside class="left-column">
+      <!-- Ảnh đại diện chữ tròn vẽ bằng CSS -->
+      <div class="avatar">NA</div>
+      
+      <!-- Họ tên và chức danh -->
+      <h1 class="name">Nguyễn Văn An</h1>
+      <p class="title">Sinh viên CNTT · K67</p>
+
+      <!-- Danh sách thông tin liên hệ -->
+      <div class="contact-info">
+        <p>✉ an.nv@tlu.edu.vn</p>
+        <p>☎ 0987 654 321</p>
+        <p>⌂ Hà Nội</p>
+        <p>⚑ github.com/annv</p>
+      </div>
+    </aside>
+
+    <!-- CỘT PHẢI: Dùng thẻ <section> cho phần nội dung chính -->
+    <section class="right-column">
+      <!-- Mục 1: Giới thiệu -->
+      <h2 class="section-title">Giới thiệu</h2>
+      <p class="section-content">
+        Sinh viên năm 3 ngành Công nghệ thông tin, yêu thích lập trình web và thiết kế giao diện. Đang tìm cơ hội thực tập vị trí Front-end Developer.
+      </p>
+
+      <!-- Mục 2: Kỹ năng -->
+      <h2 class="section-title">Kỹ năng</h2>
+      <div class="section-content skills-list">
+        <span class="skill-chip">HTML5</span>
+        <span class="skill-chip">CSS3</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">Bootstrap</span>
+        <span class="skill-chip">Git</span>
+      </div>
+
+      <!-- Mục 3: Học vấn -->
+      <h2 class="section-title">Học vấn</h2>
+      <p class="section-content">
+        2023 – nay: Trường Đại học Thủy lợi (TLU), ngành Công nghệ thông tin.
+      </p>
+
+      <!-- Mục 4: Liên kết -->
+      <h2 class="section-title">Liên kết</h2>
+      <div class="section-content links">
+        <a href="#">Portfolio</a> · 
+        <a href="#">Facebook</a> · 
+        <a href="#">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

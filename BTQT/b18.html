@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bông điên điển - Món ngon mùa nước nổi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Chọn phông chữ dễ nhìn cho trang web */
+            line-height: 1.6;               /* Thiết lập khoảng cách giữa các dòng chữ */
+            color: #333;                    /* Màu chữ mặc định cho toàn trang */
+            max-width: 950px;               /* Độ rộng tối đa của nội dung trang */
+            margin: 30px auto;              /* Căn giữa toàn bộ trang web */
+            padding: 0 20px;                /* Khoảng cách đệm hai bên lề */
+        }
+
+        /* Tiêu đề bài viết */
+        h1 {
+            color: #E65100;                 /* Tiêu đề chính màu cam */
+            font-size: 32px;                /* Kích thước chữ lớn */
+            margin-bottom: 0;               /* Loại bỏ khoảng cách phía dưới */
+        }
+
+        .subtitle {
+            color: #E65100;                 /* Tiêu đề phụ màu cam */
+            font-size: 18px;                /* Cỡ chữ dòng phụ */
+            margin-top: 5px;                /* Khoảng cách phía trên */
+            margin-bottom: 25px;            /* Khoảng cách phía dưới */
+            font-weight: bold;              /* In đậm dòng tiêu đề phụ */
+        }
+
+        /* Bố cục phần nội dung và ảnh */
+        .main-content {
+            overflow: hidden;               /* Xử lý tràn viền khi dùng float */
+            margin-bottom: 30px;            /* Khoảng cách dưới khối nội dung */
+        }
+
+        .text-section {
+            float: left;                    /* Đẩy khối văn bản sang trái */
+            width: 68%;                     /* Chiếm 68% chiều rộng */
+        }
+
+        .text-section p {
+            margin-top: 0;                  /* Bỏ khoảng cách trên đoạn văn */
+            text-align: justify;            /* Căn đều văn bản hai bên */
+        }
+
+        /* Hiệu ứng Drop cap cho chữ cái đầu */
+        .text-section p:first-of-type::first-letter { 
+            font-size: 3.8em;               /* Phóng to chữ cái đầu */
+            color: #E65100;                 /* Màu cam cho chữ cái đầu */
+            float: left;                    /* Đẩy chữ cái sang trái */
+            line-height: 0.8;               /* Điều chỉnh độ cao dòng */
+            margin-right: 8px;              /* Khoảng cách bên phải chữ cái */
+            font-weight: bold;              /* In đậm chữ cái đầu */
+        }
+
+        /* Ảnh hoa nổi bên phải, bo góc */
+        .image-section {
+            float: right;                   /* Đẩy ảnh sang phải */
+            width: 28%;                     /* Chiếm 28% chiều rộng */
+            text-align: right;              /* Căn ảnh về lề phải */
+        }
+
+        .image-section img {
+            width: 100%;                    /* Ảnh co giãn theo khối chứa */
+            border-radius: 10px;            /* Bo tròn góc hình ảnh */
+        }
+
+        /* Khối Hương vị miền Nam */
+        .flavor-box {
+            border: 2px solid #2E7D32;      /* Viền khung màu xanh */
+            background-color: #f4fbf4;      /* Màu nền nhạt cho khối */
+            padding: 20px;                  /* Khoảng cách đệm bên trong */
+            border-radius: 6px;             /* Bo tròn góc khung */
+            clear: both;                    /* Xóa hiệu ứng float của khối trên */
+        }
+
+        .flavor-box h3 {
+            color: #2E7D32;                 /* Tiêu đề khối màu xanh */
+            font-style: italic;             /* Tiêu đề in nghiêng */
+            margin-top: 0;                  /* Bỏ khoảng cách phía trên */
+            font-size: 20px;                /* Cỡ chữ tiêu đề khối */
+        }
+
+        /* Danh sách chia 2 cột bằng thuộc tính columns */
+        .flavor-box ul {
+            columns: 2;                     /* Chia danh sách thành 2 cột */
+            -webkit-columns: 2;             /* Hỗ trợ Chrome/Safari */
+            -moz-columns: 2;                /* Hỗ trợ Firefox */
+            padding-left: 20px;             /* Khoảng cách lề trái cho danh sách */
+            margin-bottom: 0;               /* Bỏ khoảng cách dưới danh sách */
+        }
+
+        .flavor-box li {
+            margin-bottom: 10px;            /* Khoảng cách giữa các mục */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tiêu đề bài viết màu cam cỡ lớn -->
+    <h1>Bông điên điển</h1>
+    <div class="subtitle">Món ngon mùa nước nổi</div>
+
+    <!-- Khối chứa nội dung đoạn văn và hình ảnh -->
+    <div class="main-content">
+        <div class="text-section">
+            <p>Mỗi năm, vào đầu mùa nước nổi, những cây điên điển bên bờ sông, bờ rạch lại xanh tươi trở lại, trổ đầy hoa vàng rực giữa vùng lũ Đồng bằng sông Cửu Long.</p>
+            <p>Trước đây, người dân nghèo dùng bông điên điển nấu cháo cằm cự qua tháng ngày khó khăn. Ngày nay, bông điên điển trở thành món ngon: làm dưa chỉ cần ngâm với giá sống trong nước muối vừa mặn, ba ngày sau là có đĩa dưa chua giòn chấm nước tương ớt.</p>
+        </div>
+        
+        <!-- Ảnh hoa nổi bên phải -->
+        <div class="image-section">
+            <img src="anhb18.jpg" alt="Bông điên điển">
+        </div>
+    </div>
+
+    <!-- Khối Hương vị miền Nam có viền xanh, danh sách 2 cột -->
+    <div class="flavor-box">
+        <h3>Hương vị miền Nam</h3>
+        <ul>
+            <li>Bánh tráng Mỹ Lồng, bánh phồng Sơn Đốc</li>
+            <li>Dồi lươn rim nước cốt dừa</li>
+            <li>Bún mắm</li>
+            <li>Bún nước lèo Sóc Trăng</li>
+            <li>Nem lai Vung</li>
+            <li>Cốm dẹp</li>
+            <li>Bưởi Tân Triều</li>
+        </ul>
+    </div>
+
+</body>
+</html>
